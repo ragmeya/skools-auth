@@ -13,20 +13,20 @@ import com.skools.dto.UserRequest;
 import com.skools.service.UserService;
 
 @Controller
-@RequestMapping("/dashboard")
-public class DashboardController {
+@RequestMapping("/auth")
+public class AuthController {
 
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/hello")
+	@RequestMapping("/login")
 	public HttpEntity<String> hello() {
 		 return new ResponseEntity<>("Hello world", HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
     public HttpEntity<String> createUser(@RequestBody UserRequest request) {
-        userService.createUser(request.getFirstName(), request.getLastName());
+        userService.createUser(request);
         return new ResponseEntity<>("Created user", HttpStatus.OK);
     }
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skools.dao.impl.UserRepository;
+import com.skools.dto.UserRequest;
 import com.skools.entity.User;
 import com.skools.service.UserService;
 
@@ -19,8 +20,8 @@ public class UserServiceImpl implements UserService {
 	 * @see com.skools.service.impl.UserService#createUser(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void createUser(String firstName, String lastName) {
-		repository.save(new User(firstName, lastName));
+	public void createUser(UserRequest request) {
+		repository.save(new User(request.getFirstName(), request.getLastName(), request.getPhone(), request.getEmail()));
 	}
 
 	/* (non-Javadoc)
