@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public void createUser(UserRequest request) {
-		repository.save(new User(request.getFirstName(), request.getLastName(), request.getPhone(), request.getEmail()));
+		repository.save(new User(request.getFirstName(), request.getLastName(), request.getEmail(), request.getPhone(), request.getAddress(), request.getAadhaar()));
 	}
 
 	/* (non-Javadoc)

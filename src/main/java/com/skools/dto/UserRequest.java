@@ -12,6 +12,10 @@ public class UserRequest implements Serializable {
 
 	private String email;
 
+	private String aadhaar;
+
+	private String address;
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -42,6 +46,22 @@ public class UserRequest implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getAadhaar() {
+		return aadhaar;
+	}
+
+	public void setAadhaar(String aadhaar) {
+		this.aadhaar = aadhaar;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 }

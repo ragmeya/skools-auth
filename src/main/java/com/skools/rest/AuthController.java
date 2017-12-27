@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skools.auth.util.SMSSender;
 import com.skools.dto.UserRequest;
 import com.skools.service.UserService;
 
@@ -18,16 +19,20 @@ public class AuthController {
 
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping("/login")
+
+	@Autowired
+	private SMSSender smsSender;
+
+	@RequestMapping("/sendotp")
 	public HttpEntity<String> hello() {
-		 return new ResponseEntity<>("Hello world", HttpStatus.OK);
+		smsSender.send();
+		return new ResponseEntity<>("Hello world", HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-    public HttpEntity<String> createUser(@RequestBody UserRequest request) {
-        userService.createUser(request);
-        return new ResponseEntity<>("Created user", HttpStatus.OK);
-    }
+	public HttpEntity<String> createUser(@RequestBody UserRequest request) {
+		userService.createUser(request);
+		return new ResponseEntity<>("Created user", HttpStatus.OK);
+	}
 
 }

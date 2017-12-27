@@ -1,14 +1,20 @@
 package com.skools.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,15 +28,36 @@ public class User {
 	public String email;
 	@Column(name = "phone", unique = true, nullable = false, length = 10)
 	public String phone;
+	@Column(name = "address", unique = true, nullable = false, length = 200)
+	public String address;
+	@Column(name = "aadhaar", unique = true, nullable = false, length = 12)
+	public String aadhaar;
 
-	public User() {
+	public User(String firstName, String lastName, String email, String phone, String address,
+			String aadhaar) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.aadhaar = aadhaar;
 	}
 
-	public User(String firstName2, String lastName2, String phone2, String email2) {
-		this.firstName = firstName2;
-		this.lastName = lastName2;
-		this.phone = phone2;
-		this.email = email2;
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getAadhaar() {
+		return aadhaar;
+	}
+
+	public void setAadhaar(String aadhaar) {
+		this.aadhaar = aadhaar;
 	}
 
 	public String getEmail() {
