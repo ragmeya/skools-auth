@@ -16,6 +16,14 @@ public class UserRequest implements Serializable {
 
 	private String address;
 
+	private String linkedin;
+
+	private String facebook;
+	
+	private String twitter;
+
+	private String schoolType;
+	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
@@ -64,4 +72,36 @@ public class UserRequest implements Serializable {
 		this.address = address;
 	}
 
+	public String getLinkedin() {
+		return linkedin;
+	}
+
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public void setLinkedin(String linkedin) {
+		this.linkedin = linkedin;
+	}
+
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
+	public String getTwitter() {
+		return twitter;
+	}
+
+	public void setTwitter(String twitter) {
+		this.twitter = twitter;
+	}
+
+	public String getSchoolType() {
+		return schoolType;
+	}
+
+	public void setSchoolType(String schoolType) {
+		this.schoolType = schoolType;
+	}
+	
 }

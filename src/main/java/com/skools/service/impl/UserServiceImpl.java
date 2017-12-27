@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.skools.dao.impl.UserRepository;
 import com.skools.dto.UserRequest;
+import com.skools.entity.Teacher;
 import com.skools.entity.User;
 import com.skools.service.UserService;
 
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	 * @see com.skools.service.impl.UserService#createUser(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void createUser(UserRequest request) {
+	public void createStudent(UserRequest request) {
 		repository.save(new User(request.getFirstName(), request.getLastName(), request.getEmail(), request.getPhone(), request.getAddress(), request.getAadhaar()));
 	}
 
@@ -38,5 +39,15 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> findUsers(String lastName) {
 		return repository.findByLastName(lastName);
+	}
+
+	@Override
+	public void createTeacher(UserRequest request) {
+		Teacher entity = new Teacher(request.getFirstName(), request.getLastName(), request.getEmail(), request.getPhone(), request.getAddress(), request.getAadhaar());
+		entity.setFacebook(request.getFacebook());
+		entity.setLinkedin(request.getLinkedin());
+		entity.setTwitter(request.getTwitter());
+		entity.setSchoolType(1);
+		repository.save(entity);
 	}
 }

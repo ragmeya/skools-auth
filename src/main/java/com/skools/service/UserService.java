@@ -11,6 +11,8 @@ public interface UserService {
 
 	List<User> findUsers(String lastName);
 
-	void createUser(UserRequest request);
+	void createStudent(UserRequest request);
+	
+	void createTeacher(UserRequest request);
 
 }

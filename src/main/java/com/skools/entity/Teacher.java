@@ -8,13 +8,13 @@ import javax.persistence.Table;
 @Table(name = "teachers")
 public class Teacher extends User {
 
-	@Column(name = "schooltype", unique = true, nullable = false, length = 1)
+	@Column(name = "schooltype", nullable = false, length = 1)
 	private int schoolType;
-	@Column(name = "linkedin", unique = true, nullable = false, length = 100)
+	@Column(name = "linkedin", unique = true, length = 100)
 	private String linkedin;
-	@Column(name = "facebook", unique = true, nullable = false, length = 100)
+	@Column(name = "facebook", unique = true, length = 100)
 	private String facebook;
-	@Column(name = "twitter", unique = true, nullable = false, length = 100)
+	@Column(name = "twitter", unique = true, length = 100)
 	private String twitter;
 
 	public Teacher(String firstName, String lastName, String email, String phone, String address,

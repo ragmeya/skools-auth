@@ -14,7 +14,7 @@ import com.skools.dto.UserRequest;
 import com.skools.service.UserService;
 
 @Controller
-@RequestMapping("/auth")
+@RequestMapping("/user")
 public class AuthController {
 
 	@Autowired
@@ -29,10 +29,15 @@ public class AuthController {
 		return new ResponseEntity<>("Hello world", HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public HttpEntity<String> createUser(@RequestBody UserRequest request) {
-		userService.createUser(request);
+	@RequestMapping(value = "/student/", method = RequestMethod.POST)
+	public HttpEntity<String> createStudent(@RequestBody UserRequest request) {
+		userService.createStudent(request);
 		return new ResponseEntity<>("Created user", HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/teacher/", method = RequestMethod.POST)
+	public HttpEntity<String> createTeacher(@RequestBody UserRequest request) {
+		userService.createTeacher(request);
+		return new ResponseEntity<>("Created user", HttpStatus.OK);
+	}
 }
