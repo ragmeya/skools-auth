@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skools.auth.util.SMSSender;
 import com.skools.dto.UserRequest;
@@ -24,8 +25,8 @@ public class AuthController {
 	private SMSSender smsSender;
 
 	@RequestMapping("/sendotp")
-	public HttpEntity<String> hello() {
-		smsSender.send();
+	public HttpEntity<String> hello(@RequestParam String mobileNumber, @RequestParam String message, @RequestParam String sender) {
+		smsSender.send(mobileNumber, message, sender);
 		return new ResponseEntity<>("Hello world", HttpStatus.OK);
 	}
 
